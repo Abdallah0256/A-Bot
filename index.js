@@ -7,7 +7,7 @@ const client = new Client({
 
 });
 client.on('ready', ()=>{
-    client.user.setActivity("mchoneynetwork.com",{type:0});
+    client.user.setActivity("Enter Text",{type:0}); //Enter text 
     client.user.setStatus('online'); //change online to change bot status
     client.application.commands.create({
         name:"clear",
@@ -97,58 +97,7 @@ client.on("interactionCreate",async (cmd)=>{
         }
     }
 })
-client.on('messageCreate',(msg)=>{
-    if(msg.content.toLowerCase().startsWith("ip")){
-        msg.reply({
-            embeds:[{
-                title:`${msg.guild.name}`,
-                thumbnail:{
-                    url:`${msg.guild.iconURL()}`,
-                    
-                },
-                color:embed_color,
-                description:"**Version** - 1.12 - 1.19.2\n",
-                fields:[
-                    {
-                        name:"PC IP",
-                        value:"mchoneynetwork.com",
-                        inline:true,
-                    },
-                    {
-                        name:"Mobile IP / Port",
-                        value:"IP: 136.243.210.43\nPORT: 25931",
-                        inline:true,
-                    },
-                    {
-                        name:"status",
-                        value:"Online🟢",
-                        inline:true,
-                    }
-                ],
-                footer:{
-                    text:`${msg.author.username}`,
-                    icon_url:`${msg.author.avatarURL()}`,
-                },
-                timestamp: new Date().toISOString(),
-                author:{
-                    name:`${client.user.username}`,
-                    icon_url: `${client.user.displayAvatarURL()}`
-                    
-                }
-            }]
-        })
-    }
-})
-const prefix = "#";
-client.on("messageCreate",(msg) =>{
-    if(msg.content.toLowerCase().startsWith(prefix + "embed")){
-        let args = msg.content.toLowerCase().split(" ");
-        
-        msg.react("✔");
-        console.log(args.slice[1]);
-        
-    }
-})
+
 const embed_color = 0xFAC62B;
 client.login(process.env.TOKEN).then(() => {
     console.log(`${client.user.username} Started No Errors`)
